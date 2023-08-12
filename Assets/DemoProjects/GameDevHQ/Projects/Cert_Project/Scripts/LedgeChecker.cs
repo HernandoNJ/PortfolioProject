@@ -11,7 +11,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
 		{
 			if (other.CompareTag("LedgeGrabChecker"))
 			{
-				var player = other.GetComponentInParent<Player>();
+				var player = other.GetComponentInParent<GameDevHQ.Scripts.Player2.Player>();
 
 				if (player != null)
 					player.GrabLedge(handsPos, this);

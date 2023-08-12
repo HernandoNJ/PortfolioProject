@@ -1,66 +1,69 @@
 using System.Collections;
 using UnityEngine;
 
-public class FinalBossWeapons : Weapons
+namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons
 {
-    [SerializeField] private float slowCooldown;
-    [SerializeField] private float midCooldown;
-    [SerializeField] private float fastCooldown;
-    
-    protected override void SetInitialValues()
+    public class FinalBossWeapons : Weapons
     {
-        ResetWeaponPositions();
-        weaponsIndex = maxWeaponsIndex;
-        UpdateWeaponPositions(weaponsIndex);
-        ShootWeapons();
-    }
+        [SerializeField] private float slowCooldown;
+        [SerializeField] private float midCooldown;
+        [SerializeField] private float fastCooldown;
 
-    private void OnEnable()
-    {
-        Enemy.OnBossStateChanged += UpdateShootCooldown; // TODO modify cooldown
-        Enemy.OnShootingStateChanged += ChangeShootingState;
-    }
-    
-    private void OnDisable()
-    {
-        Enemy.OnBossStateChanged -= UpdateShootCooldown;
-        StopCoroutine(nameof(ShootingRoutine));
-    }
-
-    private void UpdateShootCooldown(Enemy.EnemyState enemyStateArg)
-    {
-        switch (enemyStateArg)
+        protected override void SetInitialValues()
         {
-            case Enemy.EnemyState.Good:
-                shootCooldown = slowCooldown;
-                weaponsIndex = 0;
-                break;
-            case Enemy.EnemyState.Regular:
-                shootCooldown = midCooldown;
-                weaponsIndex = 1;
-                break;
-            case Enemy.EnemyState.Bad:
-                shootCooldown = fastCooldown;
-                weaponsIndex = 2;
-                break;
-            default: 
-                Debug.LogWarning("Set a valid cooldown value");
-                break;
+            ResetWeaponPositions();
+            weaponsIndex = maxWeaponsIndex;
+            UpdateWeaponPositions(weaponsIndex);
+            ShootWeapons();
         }
-        
-        UpdateWeaponPositions(weaponsIndex);
-    }
-    
-    private void ShootWeapons() => StartCoroutine(nameof(ShootingRoutine));
 
-    // Set cool down
-    // FireWeapons()
-    private IEnumerator ShootingRoutine()
-    {
-        while (gameObject.activeInHierarchy && shootEnabled)
+        private void OnEnable()
         {
-            yield return new WaitForSeconds(shootCooldown);
-            // TODO shoot mechanic: instantiate lasers in firepoint 0
+            Enemy.Enemy.OnBossStateChanged += UpdateShootCooldown; // TODO modify cooldown
+            Enemy.Enemy.OnShootingStateChanged += ChangeShootingState;
+        }
+
+        private void OnDisable()
+        {
+            Enemy.Enemy.OnBossStateChanged -= UpdateShootCooldown;
+            StopCoroutine(nameof(ShootingRoutine));
+        }
+
+        private void UpdateShootCooldown(int enemyStateArg)
+        {
+            switch (enemyStateArg)
+            {
+                case 3:
+                    shootCooldown = slowCooldown;
+                    weaponsIndex = 0;
+                    break;
+                case 2:
+                    shootCooldown = midCooldown;
+                    weaponsIndex = 1;
+                    break;
+                case 1:
+                    shootCooldown = fastCooldown;
+                    weaponsIndex = 2;
+                    break;
+                default:
+                    Debug.LogWarning("Set a valid cooldown value");
+                    break;
+            }
+
+            UpdateWeaponPositions(weaponsIndex);
+        }
+
+        private void ShootWeapons() => StartCoroutine(nameof(ShootingRoutine));
+
+        // Set cool down
+        // FireWeapons()
+        private IEnumerator ShootingRoutine()
+        {
+            while (gameObject.activeInHierarchy && shootEnabled)
+            {
+                yield return new WaitForSeconds(shootCooldown);
+                // TODO shoot mechanic: instantiate lasers in firepoint 0
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.DungeonEscapeC3Mobile.Scripts.E
 {
 	public abstract class Enemy : MonoBehaviour, IDamageable
 	{
-		[SerializeField] protected Player player;
+		[SerializeField] protected DungeonPlayer.Player player;
 		[SerializeField] protected Animator animator;
 		[SerializeField] protected SpriteRenderer spriteRend;
 		[SerializeField] protected Transform pointA, pointB;
@@ -43,7 +43,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.DungeonEscapeC3Mobile.Scripts.E
 			moveEnabled = true;
 
 			animator = GetComponentInChildren<Animator>();
-			player = GameObject.FindWithTag("Player").GetComponent<Player>();
+			player = GameObject.FindWithTag("Player").GetComponent<DungeonPlayer.Player>();
 			spriteRend = GetComponentInChildren<SpriteRenderer>();
 
 			if (animator == null || spriteRend == null || player == null)

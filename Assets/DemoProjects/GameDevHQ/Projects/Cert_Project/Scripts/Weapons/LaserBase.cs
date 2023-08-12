@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBase : MonoBehaviour
+namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LaserBase : MonoBehaviour
     {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

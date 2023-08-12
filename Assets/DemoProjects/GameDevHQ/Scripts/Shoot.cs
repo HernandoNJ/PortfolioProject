@@ -31,7 +31,7 @@ namespace Assets.DemoProjects.GameDevHQ.Scripts.Player2
 				{
 					Debug.Log("physics raycast");
 					var otherCollider = hitInfo.collider;
-					var otherHealth = otherCollider.GetComponent<Health>();
+					var otherHealth = otherCollider.GetComponent<Player1.Health>();
 
 					if (otherHealth != null)
 					{

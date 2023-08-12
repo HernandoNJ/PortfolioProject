@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using StarterAssets;
 
 public class GameEventManager : MonoBehaviour
 {

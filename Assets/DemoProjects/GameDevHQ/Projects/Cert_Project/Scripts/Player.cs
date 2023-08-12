@@ -2,9 +2,8 @@ using System;
 using UnityEngine;
 using Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Manager;
 using Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Spawner;
-using Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy;
 
-namespace DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
+namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
 {
 	public class Player : MonoBehaviour
 	{
@@ -37,10 +36,10 @@ namespace DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
 			EnemiesSpawner.OnEnemyL1WaveStarted += EnemyL1WaveStarted;
 			EnemiesSpawner.OnMidBossWaveStarted += MidBossWaveStarted;
 			EnemiesSpawner.OnFinalBossWaveStarted += FinalBossWaveStarted;
-			Enemy.Enemy.OnEnemyL1DamagedPlayer += EnemyLaserDamagedPlayer;
-			Enemy.OnMidOrFinalBossDamagedPlayer += MidOrFinalBossDamagedPlayer;
-			Enemy.OnMidBossDestroyed += EnemyL1WaveStarted;
-			LaserEnemy.EnemyLaserDamagedPlayer += EnemyLaserDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.			Enemy.OnEnemyL1DamagedPlayer += EnemyLaserDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.Enemy.OnMidOrFinalBossDamagedPlayer += MidOrFinalBossDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.Enemy.OnMidBossDestroyed += EnemyL1WaveStarted;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons.LaserEnemy.EnemyLaserDamagedPlayer += EnemyLaserDamagedPlayer;
 			Powerup.OnPowerupGot += PowerupGot;
 		}
 
@@ -49,10 +48,10 @@ namespace DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
 			EnemiesSpawner.OnEnemyL1WaveStarted -= EnemyL1WaveStarted;
 			EnemiesSpawner.OnMidBossWaveStarted -= MidBossWaveStarted;
 			EnemiesSpawner.OnFinalBossWaveStarted -= FinalBossWaveStarted;
-			Enemy.OnEnemyL1DamagedPlayer -= EnemyLaserDamagedPlayer;
-			Enemy.OnMidOrFinalBossDamagedPlayer -= MidOrFinalBossDamagedPlayer;
-			Enemy.OnMidBossDestroyed -= EnemyL1WaveStarted;
-			LaserEnemy.EnemyLaserDamagedPlayer -= EnemyLaserDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.Enemy.OnEnemyL1DamagedPlayer -= EnemyLaserDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.Enemy.OnMidOrFinalBossDamagedPlayer -= MidOrFinalBossDamagedPlayer;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy.Enemy.OnMidBossDestroyed -= EnemyL1WaveStarted;
+			Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons.LaserEnemy.EnemyLaserDamagedPlayer -= EnemyLaserDamagedPlayer;
 			Powerup.OnPowerupGot -= PowerupGot;
 		}
 

@@ -1,49 +1,52 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyLevel1Weapons : Weapons
+namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons
 {
-    [SerializeField] private float waitForShooting;
-    
-    private void OnEnable()
+    public class EnemyLevel1Weapons : Weapons
     {
-        Enemy.OnShootingStateChanged += UpdateShootingState;
-    }
+        [SerializeField] private float waitForShooting;
 
-    private void OnDisable()
-    {
-        Enemy.OnShootingStateChanged -= UpdateShootingState;
-        StopAllCoroutines();
-    }
-
-    private void UpdateShootingState(bool isShootEnabled)
-    {
-        if (isShootEnabled)
+        private void OnEnable()
         {
-            ChangeShootingState(true);
-            StartCoroutine(nameof(WaitToStartShootingRoutine));
+            Enemy.Enemy.OnShootingStateChanged += UpdateShootingState;
         }
-        else ChangeShootingState(false);
-    }
 
-    protected override void FireWeapons()
-    {
-        base.FireWeapons();
-        Instantiate(weaponsPrefabs[weaponsIndex], weaponsPositions[0].transform.position, Quaternion.identity);
-    }
-
-    private IEnumerator WaitToStartShootingRoutine()
-    {
-        yield return new WaitForSeconds(waitForShooting);
-        StartCoroutine(nameof(ShootingRoutine));
-    }
-    
-    private IEnumerator ShootingRoutine()
-    {
-        while (gameObject.activeInHierarchy && shootEnabled)
+        private void OnDisable()
         {
-            FireWeapons();
-            yield return new WaitForSeconds(shootCooldown);
+            Enemy.Enemy.OnShootingStateChanged -= UpdateShootingState;
+            StopAllCoroutines();
+        }
+
+        private void UpdateShootingState(bool isShootEnabled)
+        {
+            if (isShootEnabled)
+            {
+                ChangeShootingState(true);
+                StartCoroutine(nameof(WaitToStartShootingRoutine));
+            }
+            else ChangeShootingState(false);
+        }
+
+        protected override void FireWeapons()
+        {
+            base.FireWeapons();
+            Instantiate(weaponsPrefabs[weaponsIndex], weaponsPositions[0].transform.position, Quaternion.identity);
+        }
+
+        private IEnumerator WaitToStartShootingRoutine()
+        {
+            yield return new WaitForSeconds(waitForShooting);
+            StartCoroutine(nameof(ShootingRoutine));
+        }
+
+        private IEnumerator ShootingRoutine()
+        {
+            while (gameObject.activeInHierarchy && shootEnabled)
+            {
+                FireWeapons();
+                yield return new WaitForSeconds(shootCooldown);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts
 		//OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 		public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
-			var player = animator.GetComponentInParent<Player>();
+			var player = animator.GetComponentInParent<GameDevHQ.Scripts.Player2.Player>();
 			if (player != null)
 				player.ClimbUpComplete();
 		}

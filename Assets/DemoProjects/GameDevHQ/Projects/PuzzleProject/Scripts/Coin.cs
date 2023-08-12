@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameDevHQ.PuzzleProj.Scripts
+namespace Assets.DemoProjects.GameDevHQ.Projects.PuzzleProject.Scripts
 {
 	public class Coin : MonoBehaviour
 	{

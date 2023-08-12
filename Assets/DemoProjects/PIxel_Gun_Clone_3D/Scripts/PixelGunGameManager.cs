@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 //! Remember VERIFY NULL OBJECTS ALWAYS ... Put this color and Debug.LogError 
 namespace Assets.DemoProjects.Pixel_Gun_Clone_3D.Scripts

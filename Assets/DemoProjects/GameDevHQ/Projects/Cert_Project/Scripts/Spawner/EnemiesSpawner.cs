@@ -32,16 +32,16 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Spawner
 
 		private void OnEnable()
 		{
-			Enemy.OnEnemyDestroyed += DecreaseEnemiesAmount;
-			GameManager.OnGameStarted += StartNewWave;
-			GameManager.OnGameOver += DisableSpawning;
+			Enemy.Enemy.OnEnemyDestroyed += DecreaseEnemiesAmount;
+			Manager.GameManager.OnGameStarted += StartNewWave;
+			Manager.GameManager.OnGameOver += DisableSpawning;
 		}
 
 		private void OnDisable()
 		{
-			Enemy.OnEnemyDestroyed -= DecreaseEnemiesAmount;
-			GameManager.OnGameStarted -= StartNewWave;
-			GameManager.OnGameOver -= DisableSpawning;
+			Enemy.Enemy.OnEnemyDestroyed -= DecreaseEnemiesAmount;
+			Manager.GameManager.OnGameStarted -= StartNewWave;
+			Manager.GameManager.OnGameOver -= DisableSpawning;
 			StopAllCoroutines();
 		}
 
