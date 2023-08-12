@@ -22,7 +22,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
             animController.Play("midBossGood");
             Invoke(nameof(EnemyVulnerable), 1f);
 
-            UpdateBossState(EnemyState.Good);
+            UpdateBossState(2);
         }
 
         private void EnemyVulnerable() => isVulnerable = true;

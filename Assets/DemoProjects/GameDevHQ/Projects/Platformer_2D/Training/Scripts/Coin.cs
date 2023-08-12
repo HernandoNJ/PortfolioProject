@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.DemoProjects.GameDevHQ.Projects.Training.Scripts
+namespace Assets.DemoProjects.GameDevHQ.Projects.Platformer_2D.Training.Scripts
 {
 	public class Coin : MonoBehaviour
 	{

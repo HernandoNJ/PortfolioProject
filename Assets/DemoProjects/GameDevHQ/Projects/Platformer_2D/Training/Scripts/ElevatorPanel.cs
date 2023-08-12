@@ -25,8 +25,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Platformer_2D.Training.Scripts
 		{
 			if (other.CompareTag("Player"))
 			{
-				var coinsCount = other.GetComponent
-								<GameDevHQ.PuzzleProj.Scripts.Player>().CoinsCount();
+				var coinsCount = other.GetComponent<PuzzleProject.Scripts.Player>().CoinsCount();
 
 				if (eKeyPressed && coinsCount >= requiredCoins)
 				{

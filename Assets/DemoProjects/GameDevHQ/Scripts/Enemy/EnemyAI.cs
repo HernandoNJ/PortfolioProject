@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.DemoProjects.GameDevHQ.Scripts.Player1;
 
 namespace Assets.DemoProjects.GameDevHQ.Scripts.Enemy
 {

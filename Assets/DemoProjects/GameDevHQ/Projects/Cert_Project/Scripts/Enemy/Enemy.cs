@@ -5,13 +5,6 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
 {
 	public class Enemy : MonoBehaviour
 	{
-		public enum EnemyState
-		{
-			Good,
-			Regular,
-			Bad
-		}
-
 		[SerializeField] protected int health;
 		[SerializeField] protected int scorePoints;
 		[SerializeField] private float shootingDelay;
@@ -28,7 +21,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
 		[SerializeField] protected Animator animController;
 
 		public static event Action<int> OnMidOrFinalBossDamagedPlayer;
-		public static event Action<EnemyState> OnBossStateChanged;
+		public static event Action<int> OnBossStateChanged;
 		public static event Action<int> OnEnemyDestroyed;
 		public static event Action OnEnemyL1Destroyed;
 		public static event Action OnMidBossDestroyed;
@@ -84,17 +77,17 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
 
 		private void SetVulnerable() => isVulnerable = true;
 
-		protected void UpdateBossState(EnemyState enemyStateArg)
+		protected void UpdateBossState(int enemyStateArg)
 		{
 			switch (enemyStateArg)
 			{
-				case EnemyState.Good:
+				case 3:
 					UpdateBossState2(Color.green, 1f, enemyStateArg);
 					break;
-				case EnemyState.Regular:
+				case 2:
 					UpdateBossState2(Color.yellow, 1.2f, enemyStateArg);
 					break;
-				case EnemyState.Bad:
+				case 1:
 					UpdateBossState2(Color.red, 1.4f, enemyStateArg);
 					break;
 				default:
@@ -103,7 +96,8 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
 			}
 		}
 
-		private void UpdateBossState2(Color colorArg, float animSpeed, EnemyState enemyStateValue)
+		// enemy state values: 3 good, 2 regular, 3 bad
+		private void UpdateBossState2(Color colorArg, float animSpeed, int enemyStateValue)
 		{
 			shield.GetComponent<Renderer>().material.color = colorArg;
 			animController.speed = animSpeed;
@@ -123,9 +117,9 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Enemy
 				else if (isMidBoss || isFinalBoss)
 				{
 					if (health is < 30 and > 10)
-						UpdateBossState(EnemyState.Regular);
+						UpdateBossState(2);
 					else if (health < 10)
-						UpdateBossState(EnemyState.Bad);
+						UpdateBossState(1);
 				}
 			}
 			else

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.DemoProjects.GameDevHQ.Projects.PuzzleProject.Scripts
+namespace Assets.DemoProjects.GameDevHQ.Projects.DungeonEscapeC3Mobile.Scripts
 {
 	public class GameManager : MonoBehaviour
 	{
@@ -15,13 +15,13 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.PuzzleProject.Scripts
 			}
 		}
 
-		public Player Player { get; private set; }
+		public DungeonPlayer.Player Player { get; private set; }
 		public bool HasKeyToCastle { get; set; }
 
 		private void Awake()
 		{
 			instance = this;
-			Player = GameObject.FindWithTag("Player").GetComponent<Player>();
+			Player = GameObject.FindWithTag("Player").GetComponent<DungeonPlayer.Player>();
 		}
 	}
 }

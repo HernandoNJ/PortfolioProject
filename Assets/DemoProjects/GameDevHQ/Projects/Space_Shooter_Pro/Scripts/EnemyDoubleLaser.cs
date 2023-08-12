@@ -2,29 +2,32 @@
 
 namespace Assets.DemoProject.GameDevHQ.Projects.Space_Shooter_Pro.Scripts
 {
-	[SerializeField] private float speed = 4f;
-
-	private void Update()
+	public class EnemyDoubleLaser:MonoBehaviour
 	{
-		MoveDoubleLaser();
-	}
+		[SerializeField] private float speed = 4f;
 
-	public void MoveDoubleLaser()
-	{
-		transform.Translate(Vector2.down * speed * Time.deltaTime);
-
-		if (transform.position.y < -7.5f)
-			Destroy(gameObject);
-	}
-
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.CompareTag("Player"))
+		private void Update()
 		{
-			Player player = other.GetComponent<Player>();
-			if (player != null)
-				player.Damage(1);
-			Destroy(gameObject);
+			MoveDoubleLaser();
+		}
+
+		public void MoveDoubleLaser()
+		{
+			transform.Translate(Vector2.down * speed * Time.deltaTime);
+
+			if (transform.position.y < -7.5f)
+				Destroy(gameObject);
+		}
+
+		private void OnTriggerEnter2D(Collider2D other)
+		{
+			if (other.CompareTag("Player"))
+			{
+				Player player = other.GetComponent<Player>();
+				if (player != null)
+					player.Damage(1);
+				Destroy(gameObject);
+			}
 		}
 	}
 }

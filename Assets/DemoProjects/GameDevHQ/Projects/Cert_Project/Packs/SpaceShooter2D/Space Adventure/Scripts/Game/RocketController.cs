@@ -171,7 +171,7 @@ public class RocketController : MonoBehaviour
         
 #if UNITY_ANDROID || UNITY_IOS
             // If vibration is enabled then vibrate device.
-            if(Settings.GetSetting("Vibration"))
+            if(Main_Menu.Settings.GetSetting("Vibration"))
             {
                 Handheld.Vibrate();
             }

@@ -11,13 +11,13 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons
 
         private void OnEnable()
         {
-            Player.OnPlayerShooting += FireWeapons;
+            Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Player.OnPlayerShooting += FireWeapons;
             Player.OnAddWeapons += IncreaseWeapons;
             Player.OnReduceWeapons += DecreaseWeapons;
             LaserEnemy.EnemyLaserDamagedPlayer += DecreaseWeapons;
             Enemy.Enemy.OnEnemyL1DamagedPlayer += DecreaseWeapons;
             Enemy.Enemy.OnMidOrFinalBossDamagedPlayer += DecreaseWeapons;
-            EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;
+            Spawner.EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;
         }
 
         private void OnDisable()
@@ -28,7 +28,7 @@ namespace Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Weapons
             LaserEnemy.EnemyLaserDamagedPlayer -= DecreaseWeapons;
             Enemy.Enemy.OnEnemyL1DamagedPlayer -= DecreaseWeapons;
             Enemy.Enemy.OnMidOrFinalBossDamagedPlayer -= DecreaseWeapons;
-            EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;
+            Spawner.EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;
         }
 
         private void SetMidBossCooldown() => shootCooldown = fastShooting;

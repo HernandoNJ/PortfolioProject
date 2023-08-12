@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.DemoProjects.GameDevHQ.Projects.Cert_Project.Scripts.Manager;
 
 namespace MyAssets.Packs.SpShooter.Scripts
 {
